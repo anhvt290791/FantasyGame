@@ -1,12 +1,27 @@
 #include "Player.h"
+using namespace cocos2d;
+using namespace std;
 
 bool Player::init()
 {
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    auto sprite = Sprite::create("Players/Knight/Idle/idle1.png");
-    sprite->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    sprite = Sprite::create("Players/Knight/Idle/idle1.png");
     this->addChild(sprite);
-
+    this->scheduleUpdate();
     return true;
+}
+
+
+void Player::update(float dt)
+{
+    if (index == 12)
+    {
+        index = 1;
+    }
+    else
+    {
+        index++;
+    }
+    this->removeChild(sprite);
+    sprite = Sprite::create("Players/Knight/Idle/idle" + to_string(index) + ".png");
+    this->addChild(sprite);
 }
