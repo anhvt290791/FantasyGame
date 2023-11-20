@@ -13,8 +13,8 @@ bool GamePlay::init()
 	this->addChild(sprite);
 
 	Player* player = Player::create();
-	sprite->setPosition(Vec2(visualSize.width / 2 + origin.x, visualSize.height / 2 + origin.y));
 	this->addChild(player);
+	player->setPosition(Vec2(visualSize.width / 2 + origin.x, visualSize.height / 2 + origin.y));
 	return true;
 };
 
